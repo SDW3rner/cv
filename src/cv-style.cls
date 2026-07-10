@@ -3,7 +3,6 @@
 \ProvidesClass{cv-style}[2015/02/27 CV class]
 \NeedsTeXFormat{LaTeX2e}
 
-\DeclareOption{espanol}{\def\@cv@espanol{}}
 \DeclareOption{deutsch}{\def\@cv@deutsch{}}
 \DeclareOption{print}{\def\@cv@print{}}
 \DeclareOption*{%
@@ -111,16 +110,11 @@
 %\sethyphenation[<options>]{<language>}{<list of words separated by spaces>}
 
 \makeatletter
-\ifdefined\@cv@espanol
-  \def\lastupdatedtext{Última Actualización el}
+\ifdefined\@cv@deutsch
+  \def\lastupdatedtext{Zuletzt aktualisiert am}
 \else
-  \ifdefined\@cv@deutsch
-    \def\lastupdatedtext{Zuletzt aktualisiert am}
-  \else
-    \def\lastupdatedtext{Last Updated on}
-  \fi
+  \def\lastupdatedtext{Last Updated on}
 \fi
-\makeatother
 
 \setlength{\TPHorizModule}{0.01\paperwidth}
 \setlength{\TPVertModule}{0.01\paperwidth}
@@ -196,7 +190,7 @@
 \newcommand{\entrywithlogo}[5]{%
   \parbox[t]{2.4cm}{%
     \raggedright #1\par\vspace{0.12cm}%
-    \includegraphics[height=0.62cm,keepaspectratio]{#5}%
+    \includegraphics[height=0.62cm, width=2.16cm,keepaspectratio]{#5}%
   }&\parbox[t]{12.8cm}{%
     \textbf{#2}%
     \hfill%
