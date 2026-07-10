@@ -180,12 +180,19 @@
   \end{tabular*}
 }
 \renewcommand{\bfseries}{\headingfont\color{headercolor}}
-\newcommand{\entry}[4]{%
+\newcommand{\skillentry}[2]{%
+  \parbox[t]{15.2cm}{%
+    \textbf{#1}
+    \hfill
+    {\footnotesize\addfontfeature{Color=lightgray} #2}\\%
+    \vspace{-0.2cm}\vspace{\parsep}%
+  }\\}
+\newcommand{\entry}[3]{%
   #1&\parbox[t]{12.8cm}{%
     \textbf{#2}%
     \hfill%
     {\footnotesize\addfontfeature{Color=lightgray} #3}\\%
-    #4\vspace{\parsep}%
+    \vspace{-0.2cm}\vspace{\parsep}%
   }\\}
 \newcommand{\entrywithlogo}[5]{%
   \parbox[t]{2.4cm}{%
