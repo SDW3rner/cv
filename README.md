@@ -19,5 +19,10 @@ The CV is built with XeLaTeX (or LuaLaTeX) because the template uses OpenType fo
 
 ### Switching languages
 
-- German (default): keep the document class line as `\documentclass[deutsch]{cv-style}`.
-- English: change it to `\documentclass{cv-style}`.
+- German (default): build normally with the standard command above.
+- English: pass an extra macro override to XeLaTeX and write a separate output file:
+
+  ```bash
+  cd src
+  xelatex -interaction=nonstopmode -halt-on-error -output-directory=../build -jobname=cv_simon_werner_en "\def\cvvariant{english}\input{cv_simon_werner.tex}"
+  ```

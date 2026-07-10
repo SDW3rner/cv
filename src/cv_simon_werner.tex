@@ -1,16 +1,29 @@
 % -- Encoding UTF-8 without BOM
 % -- XeLaTeX => PDF (BIBER)
 
-\documentclass[deutsch]{cv-style}          % Remove [deutsch] to switch the CV to English.
-                                    % Add 'print' as an option into the square bracket to remove colours from this template for printing.
+% Build-time language switch:
+%   xelatex "\def\cvvariant{english}\input{cv_simon_werner.tex}"
+\providecommand{\cvvariant}{deutsch}
+\def\cvenglish{english}
+\ifx\cvvariant\cvenglish
+  \documentclass{cv-style}
+\else
+  \documentclass[deutsch]{cv-style}
+\fi
+                                  % Add 'print' as an option into the square bracket to remove colours from this template for printing.
 
 \sethyphenation{german}{} % Add words between the {} to avoid them to be cut
 
 \geometry{left=5.6cm, top=0.7cm, right=1cm, bottom=0.6cm, nohead, nofoot}
 
-\makeatletter
 \newif\ifcvdeutsch
-\ifdefined\@cv@deutsch\cvdeutschtrue\else\cvdeutschfalse\fi
+\ifx\cvvariant\cvenglish
+  \cvdeutschfalse
+\else
+  \cvdeutschtrue
+\fi
+
+\makeatletter
 \newcommand{\cvsection}[1]{%
   \begingroup
   \edef\x{\endgroup\noexpand\section{#1}}%
