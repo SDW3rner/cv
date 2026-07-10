@@ -1,23 +1,123 @@
 % -- Encoding UTF-8 without BOM
 % -- XeLaTeX => PDF (BIBER)
 
-\documentclass[deutsch]{cv-style}          % Add 'print' as an option into the square bracket to remove colours from this template for printing.
-                                    % Add 'espanol' as an option into the square bracket to change the date format of the Last Updated Text
+\documentclass[deutsch]{cv-style}          % Remove [deutsch] to switch the CV to English.
+                                    % Add 'print' as an option into the square bracket to remove colours from this template for printing.
 
 \sethyphenation{german}{} % Add words between the {} to avoid them to be cut
 
+\geometry{left=5.6cm, top=0.7cm, right=1cm, bottom=0.6cm, nohead, nofoot}
+
+\makeatletter
+\newif\ifcvdeutsch
+\ifdefined\@cv@deutsch\cvdeutschtrue\else\cvdeutschfalse\fi
+\newcommand{\cvsection}[1]{%
+  \begingroup
+  \edef\x{\endgroup\noexpand\section{#1}}%
+  \x
+}
+
+\ifcvdeutsch
+  \newcommand{\cvcontacttitle}{Kontakt}
+  \newcommand{\cvlanguagetitle}{Sprachen}
+  \newcommand{\cvskillstitle}{Kenntnisse}
+  \newcommand{\cvworktitle}{Berufserfahrung}
+  \newcommand{\cvedutitle}{Akademische Ausbildung}
+  \newcommand{\cvqualtitle}{Andere Qualifikationen}
+  \newcommand{\cvmilestoneplaceholder}{Platz für Meilenstein-Logos}
+  \newcommand{\cvlanguages}{Deutsch\par Französisch\par Englisch}
+
+  \newcommand{\cvskills}{%
+    Programmieren: C, C++, Python, CMake, Bazel, GitHub Copilot\\%
+    Continuous Integration: Git, SVN, GitHub Workflows \& Actions, Gerrit, Jenkins\\%
+    Teamwork: CoreALM Teamforge, Atlassian JIRA \& Confluence\\%
+    Datenanalyse: Databricks, Grafana\\%
+    Simulation: Mathworks Matlab/Simulink, Intempora RTMaps, IPG CarMaker\\%
+    Anforderungsmanagement: Sphinx reStructuredText, Intland CodeBeamer%
+  }
+
+  \newcommand{\cvworkexperience}{%
+    \entry{seit 2026}{CARIAD SE}{Ingolstadt, Deutschland}{\jobtitle{Developer}\\Verifikation von Anforderungen und Funktionstests für die gesamte Software im hauseigenen ADAS Stack.}%
+    \entry{2022 - 2026}{CARIAD SE - Automated Driving Alliance}{Ingolstadt, Deutschland}{\jobtitle{Feature Developer}\\Konzeption, Planung, Anforderungserstellung und -abstimmung sowie End-to-End Tests für L2++ HandsFree Fahrfunktionen im Rahmen eines Kooperationsprojekts mit der Robert Bosch GmbH. Unterstützung der Komponententeams bei der Implementierung dieser Funktionen im Bereich Situationserkennung sowie taktische und strategische Planung.}%
+    \entry{2021 - 2022}{Valeo Driver Assistance Research}{Kronach, Deutschland}{\jobtitle{System-Ingenieur}\\Entwicklung, Integration und Test neuer Funktionen sowie öffentlicher Förderprojekte für den kombinierten L4 Autobahn- und Stadtpilot \emph{Drive4U}.}%
+    \entry{2017 - 2021}{Valeo Driver Assistance Research}{Kronach, Deutschland}{\jobtitle{Software-Ingenieur}\\Entwicklung und Test neuer Module für den Valeo L4 Autobahnpilot \emph{Cruise4U} und öffentliche Förderprojekte. Erfolgreicher Abschluss der EU-Projekte \emph{CloudLSVA} und \emph{VI-DAS}. Zahlreiche \emph{Cruise4U}-Demonstrationen für Kunden und Partner}%
+    \entry{2013 - 2014}{General Electric Healthcare}{Buc, Frankreich}{\jobtitle{Fachpraktikum zur Bachelorarbeit}\\Entwicklung eines Systems zur Kollisionsdetektion für einen medizinischen Röntgenrobotor.}%
+    \entry{2009 - 2010}{Unterstützungsbatallion Kommando Operative Führung Eingreifkräfte}{Ulm, Deutschland}{\jobtitle{Grundwehrdienst}}%
+  }
+
+  \newcommand{\cveducation}{%
+    \entry{2012 - 2016}{Ingénieur diplomé {\normalfont in Mechatronik}}{ENSIAME, Valenciennes}{Vertiefungsrichtung Mikrosystemtechnik}%
+    \entry{2014 - 2016}{M.Sc. {\normalfont in Mechatronik [Note 1,9]}}{Universität des Saarlandes}{Vertiefungsrichtung Mikrosystemtechnik\\Masterarbeit \emph{Optimierung des Einsparpotentials eines GPU-basierten Global-Dimming-Algorithmus für LCD-Anzeigen in Automobilanwendungen} am Lehrstuhl für Mikroelektronik}%
+    \entry{2010 - 2014}{B.Sc. {\normalfont in Mechatronik [Note 2,4]}}{Universität des Saarlandes}{Vertiefungsrichtung Mikrosystemtechnik}%
+  }
+
+  \newcommand{\cvqualifications}{%
+    \entry{2023}{Prototypen-Fahrlizenz Stufe C - Trained Driver}{AUDI Driving Experience Center}{\vspace{-0.3cm}}%
+    \entry{2018}{Prüfgeländeschein Stufe C}{ATP Papenburg}{\vspace{-0.3cm}}%
+    \entry{2007}{Führerschein Klasse B}{}{\vspace{-0.3cm}}%
+  }
+\else
+  \newcommand{\cvcontacttitle}{Contact}
+  \newcommand{\cvlanguagetitle}{Languages}
+  \newcommand{\cvskillstitle}{Skills}
+  \newcommand{\cvworktitle}{Work Experience}
+  \newcommand{\cvedutitle}{Education}
+  \newcommand{\cvqualtitle}{Other Qualifications}
+  \newcommand{\cvmilestoneplaceholder}{Space for milestone logos}
+  \newcommand{\cvlanguages}{German\par French\par English}
+
+  \newcommand{\cvskills}{%
+    Programming: C, C++, Python, CMake, Bazel, GitHub Copilot\\%
+    Continuous Integration: Git, SVN, GitHub Workflows \& Actions, Gerrit, Jenkins\\%
+    Teamwork: CoreALM Teamforge, Atlassian JIRA \& Confluence\\%
+    Data analysis: Databricks, Grafana\\%
+    Simulation: Mathworks Matlab/Simulink, Intempora RTMaps, IPG CarMaker\\%
+    Requirements management: Sphinx reStructuredText, Intland CodeBeamer%
+  }
+
+  \newcommand{\cvworkexperience}{%
+    \entry{since 2026}{CARIAD SE}{Ingolstadt, Germany}{\jobtitle{Developer}\\Verification of requirements and functional tests for the full software stack in the CARIAD ADAS domain.}%
+    \entry{2022 - 2026}{CARIAD SE - Automated Driving Alliance}{Ingolstadt, Germany}{\jobtitle{Feature Developer}\\Defined, planned, and coordinated requirements and carried out end-to-end testing for L2++ HandsFree driving functions in a collaboration project with Robert Bosch GmbH. Supported component teams in implementing these functions in the areas of environment perception as well as tactical and strategic planning.}%
+    \entry{2021 - 2022}{Valeo Driver Assistance Research}{Kronach, Germany}{\jobtitle{Systems Engineer}\\Developed, integrated, and tested new features and public funding projects for the combined L4 highway and urban pilot \emph{Drive4U}.}%
+    \entry{2017 - 2021}{Valeo Driver Assistance Research}{Kronach, Germany}{\jobtitle{Software Engineer}\\Developed and tested new modules for the Valeo L4 highway pilot \emph{Cruise4U} and public funding projects. Successfully completed the EU projects \emph{CloudLSVA} and \emph{VI-DAS}. Conducted numerous \emph{Cruise4U} demonstrations for customers and partners.}%
+    \entry{2013 - 2014}{General Electric Healthcare}{Buc, France}{\jobtitle{Internship for the bachelor thesis}\\Development of a collision-detection system for a medical X-ray robot.}%
+    \entry{2009 - 2010}{Supporting Battalion Command of Operational Leadership for Intervention Forces}{Ulm, Germany}{\jobtitle{Basic military service}}%
+  }
+
+  \newcommand{\cveducation}{%
+    \entry{2012 - 2016}{Ingénieur diplômé {\normalfont in Mechatronics}}{ENSIAME, Valenciennes}{Specialization in microsystems engineering}%
+    \entry{2014 - 2016}{M.Sc. {\normalfont in Mechatronics [Note 1,9]}}{Saarland University}{Specialization in microsystems engineering\\Master thesis \emph{Optimization of the energy-saving potential of a GPU-based global dimming algorithm for LCD displays in automotive applications} at the Chair for Microelectronics}%
+    \entry{2010 - 2014}{B.Sc. {\normalfont in Mechatronics [Note 2,4]}}{Saarland University}{Specialization in microsystems engineering}%
+  }
+
+  \newcommand{\cvqualifications}{%
+    \entry{2023}{Prototype driving licence level C - Trained Driver}{AUDI Driving Experience Center}{\vspace{-0.3cm}}%
+    \entry{2018}{Test track certificate level C}{ATP Papenburg}{\vspace{-0.3cm}}%
+    \entry{2007}{Driver's licence class B}{}{\vspace{-0.3cm}}%
+  }
+\fi
+\makeatother
+
+\AtBeginDocument{%
+  \small
+  \setlength{\parskip}{1pt}
+  \setlength{\parsep}{1pt}
+  \setlength{\itemsep}{0pt}
+  \setlength{\topsep}{0pt}
+}
+
 \begin{document}
 
-\header{Simon}{Werner}           % Your name
+\header{Simon}{Werner}
 \lastupdated
 
 %----------------------------------------------------------------------------------------
-%	SIDEBAR SECTION  -- In the aside, each new line forces a line break
+% SIDEBAR SECTION  -- In the aside, each new line forces a line break
 %----------------------------------------------------------------------------------------
 
 \begin{aside}
 %
-\section{Kontakt}
+\cvsection{\cvcontacttitle}
 Karwendelstraße 24A
 81369 München
 Deutschland
@@ -26,131 +126,51 @@ Deutschland
 ~
 sd\_werner@hotmail.com
 %
-\section{Sprachen}
-Deutsch
-Französisch
-Englisch
+\cvsection{\cvlanguagetitle}
+\cvlanguages
 \end{aside}
 
 %----------------------------------------------------------------------------------------
-%	SKILLS SECTION
+% SKILLS SECTION
 %----------------------------------------------------------------------------------------
 
-\section{Kenntnisse}
-  \vspace{-0.2cm}
+\cvsection{\cvskillstitle}
+\vspace{-0.15cm}
 
-Programmieren: C, C++, Python, CMake, Bazel, Github Copilot\\
-Contineous Integration: Git, SVN, GitHub  Workflows \& Actions, Gerrit, Jenkins\\
-Teamwork: CoreALM Teamforge, Atlassian JIRA \& Confluence\\
-Datenanalyse: Databricks, Grafana\\
-Simulation: Mathworks Matlab/Simulink, Intempora RTMaps, IPG CarMaker\\
-Anforderungsmanagement: Sphinx Restructured Text, Intland CodeBeamer\\
+\cvskills
 
 %----------------------------------------------------------------------------------------
-%	WORK EXPERIENCE SECTION
+% WORK EXPERIENCE SECTION
 %----------------------------------------------------------------------------------------
 
-\section{Berufserfahrung}
+\cvsection{\cvworktitle}
 
 \begin{entrylist}
-%------------------------------------------------
-\entry
-  {seit 2026}
-  {CARIAD SE}
-  {Ingolstadt, Deutschland}
-  {\jobtitle{Developer}\\
-  Verifikation von Anforderungen und Funktionstests für die gesamte Software im CARIAD ADAS Stack.}
-\entry
-  {2021 - 2022}
-  {Valeo Driver Assistence Research}
-  {Kronach, Deutschland}
-  {\jobtitle{System-Ingenieur}\\
-  Entwicklung, Integration und Test neuer Funktionen und Module für den kombinierten L4 Autobahn- und Stadtpilot \emph{Drive4U} von Valeo und öffentliche Förderprojekte.
-  Planung und Durchführung von Kunden-Demonstrationen.}
-%------------------------------------------------
-\entry
-  {2017 - 2021}
-  {Valeo Driver Assistence Research}
-  {Kronach, Deutschland}
-  {\jobtitle{Software-Ingenieur}\\
-  Entwicklung, Integration und Test neuer Funktionen und Module
-  für den Valeo L4 Autobahnpilot \emph{Cruise4U} und öffentliche Förderprojekte.
-  \begin{itemize}
-    \item Erfolgreicher Abschluss der EU-Projekte \emph{CloudLSVA} und \emph{VI-DAS}
-    \item Entwicklung eines Moduls zur Trajektorienplanung im Fall eines partiellen Systemausfalls
-    \item Zahlreiche \emph{Cruise4U}-Demonstrationen für potentielle Kunden, politische Entscheidungsträger und akademische Partner
-  \end{itemize}}
-%------------------------------------------------
-\entry
-  {2013 - 2014}
-  {General Electric Healthcare}
-  {Buc, Frankreich}
-  {\jobtitle{Fachpraktikum zur Bachelorarbeit}\\
-  Entwicklung eines Systems zur Kollisionsdetektion für einen medizinischen Röntgen-
-  Robotor.}
-%------------------------------------------------
-\entry
-  {2009 - 2010}
-  {Unterstützungsbatallion Kommando Operative Führung Eingreifkräfte}
-  {Ulm, Deutschland}
-  {\jobtitle{Grundwehrdienst}}
-%------------------------------------------------
-
+\cvworkexperience
 \end{entrylist}
 
 %----------------------------------------------------------------------------------------
-%	EDUCATION SECTION
+% EDUCATION SECTION
 %----------------------------------------------------------------------------------------
 
-\section{Akademische Ausbildung}
+\cvsection{\cvedutitle}
 
 \begin{entrylist}
-%------------------------------------------------
-\entry
-{2012 - 2016}
-{Ingénieur diplomé {\normalfont in Mechatronik}}
-{ENSIAME, Valenciennes}
-{Vertiefungsrichtung Mikrosystemtechnik}
-%------------------------------------------------
-\entry
-{2014 - 2016}
-{M.Sc. {\normalfont in Mechatronik [Note 1,9]}}
-{Universität des Saarlandes}
-{Vertiefungsrichtung Mikrosystemtechnik\\
-Masterarbeit \emph{Optimierung des Einsparpotentials eines GPU-basierten Global-Dimming-Algorithmus für LCD-Anzeigen in Automobilanwendungen} am Lehrstuhl für Mikroelektronik }
-%------------------------------------------------
-\entry
-{2010 - 2014}
-{B.Sc. {\normalfont in Mechatronik [Note 2,4]}}
-{Universität des Saarlandes}
-{Vertiefungsrichtung Mikrosystemtechnik}
-%------------------------------------------------
+\cveducation
 \end{entrylist}
 
 %----------------------------------------------------------------------------------------
-%	OTHER QUALIFICATIONS SECTION
+% OTHER QUALIFICATIONS SECTION
 %----------------------------------------------------------------------------------------
 
-\section{Andere Qualifikationen}
+\vspace{0.1cm}
+\cvsection{\cvqualtitle}
 
 \begin{entrylist}
-%------------------------------------------------
-\entry
-{2023}
-{Prototypen-Fahrlizenz Stufe C - Trained Driver}
-{AUDI Driving Experience Center}
-{\vspace{-0.3cm}}
-\entry
-{2018}
-{Prüfgeländeschein Stufe C}
-{ATP Papenburg}
-{\vspace{-0.3cm}}
-\entry
-{2007}
-{Führerschein Klasse B}
-{}
-{\vspace{-0.3cm}}
-%------------------------------------------------
+\cvqualifications
 \end{entrylist}
+
+\vspace{0.15cm}
+{\footnotesize\color{lightgray}\cvmilestoneplaceholder}
 
 \end{document}

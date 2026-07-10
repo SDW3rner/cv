@@ -53,7 +53,17 @@
 % Fonts %
 %----------------------------------------------------------------------------------------
 
-\def \fontpath{../fonts/}
+\makeatletter
+\IfFileExists{fonts/Roboto-Regular.ttf}{%
+  \def\fontpath{fonts/}%
+}{%
+  \IfFileExists{../fonts/Roboto-Regular.ttf}{%
+    \def\fontpath{../fonts/}%
+  }{%
+    \def\fontpath{./fonts/}%
+  }%
+}
+\makeatother
 
 \RequirePackage[quiet]{fontspec}
 \RequirePackage[math-style=TeX]{unicode-math}
@@ -93,25 +103,23 @@
 %----------------------------------------------------------------------------------------
 
 \RequirePackage[absolute,overlay]{textpos}
-\RequirePackage{polyglossia}
 
 \newcommand{\sethyphenation}[3][]{%
-  \sbox0{\begin{otherlanguage}[#1]{#2}
-    \hyphenation{#3}\end{otherlanguage}}}
+  \ignorespaces
+}
 %\sethyphenation[<options>]{<language>}{<list of words separated by spaces>}
 
+\makeatletter
 \ifdefined\@cv@espanol
-  \setdefaultlanguage{spanish}
   \def\lastupdatedtext{Última Actualización el}
 \else
   \ifdefined\@cv@deutsch
-    \setdefaultlanguage{german}
     \def\lastupdatedtext{Zuletzt aktualisiert am}
   \else
-    \setdefaultlanguage[variant=british]{english}
     \def\lastupdatedtext{Last Updated on}
   \fi
 \fi
+\makeatother
 
 \setlength{\TPHorizModule}{0.01\paperwidth}
 \setlength{\TPVertModule}{0.01\paperwidth}
