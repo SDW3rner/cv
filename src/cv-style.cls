@@ -84,6 +84,7 @@
 % Header %
 %----------------------------------------------------------------------------------------
 
+\RequirePackage{graphicx}
 \RequirePackage{tikz}
 
 \newcommand{\header}[2]{%
@@ -154,12 +155,12 @@
 }
 
 \renewcommand{\section}[1]{
-  {\par\vspace{\parskip}
+  {\par\vspace{0.35cm}
   {%
     \LARGE\headingfont\color{headercolor}%
     \@sectioncolor #1%
   }
-  \par\vspace{\parskip}}
+  \par\vspace{0.2cm}}
 }
 
 \renewcommand{\subsection}[2]{
@@ -191,6 +192,16 @@
     \hfill%
     {\footnotesize\addfontfeature{Color=lightgray} #3}\\%
     #4\vspace{\parsep}%
+  }\\}
+\newcommand{\entrywithlogo}[5]{%
+  \parbox[t]{2.4cm}{%
+    \raggedright #1\par\vspace{0.12cm}%
+    \includegraphics[height=0.62cm,keepaspectratio]{#5}%
+  }&\parbox[t]{12.8cm}{%
+    \textbf{#2}%
+    \hfill%
+    {\footnotesize\addfontfeature{Color=lightgray} #3}\\%
+    #4\vspace{0.25cm}%
   }\\}
 
 %----------------------------------------------------------------------------------------
