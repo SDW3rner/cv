@@ -1,4 +1,5 @@
 name: Build CV
+# build commands are run twice in order to resolve cross-references
 
 on:
   push:
@@ -19,14 +20,26 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-latex-extra
+        
+      - name: Create build directory
+        run: mkdir -p build
 
       - name: Build German CV
         run: |
-          mkdir -p build
+          cd src
+          xelatex -interaction=nonstopmode -halt-on-error -output-directory=../build cv_simon_werner.tex
+
+      - name: Re-build German CV to resolve cross-references
+        run: |
           cd src
           xelatex -interaction=nonstopmode -halt-on-error -output-directory=../build cv_simon_werner.tex
 
       - name: Build English CV
+        run: |
+          cd src
+          xelatex -interaction=nonstopmode -halt-on-error -output-directory=../build -jobname=cv_simon_werner_en "\def\cvvariant{english}\input{cv_simon_werner.tex}"
+          
+      - name: Re-build English CV to resolve cross-references
         run: |
           cd src
           xelatex -interaction=nonstopmode -halt-on-error -output-directory=../build -jobname=cv_simon_werner_en "\def\cvvariant{english}\input{cv_simon_werner.tex}"
