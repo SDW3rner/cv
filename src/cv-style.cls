@@ -53,16 +53,18 @@
 % Fonts %
 %----------------------------------------------------------------------------------------
 
+\def \fontpath{../fonts/}
+
 \RequirePackage[quiet]{fontspec}
 \RequirePackage[math-style=TeX]{unicode-math}
 
-\newfontfamily\bodyfont{Roboto-Regular}[Path=../fonts/]
-\newfontfamily\bodyfontit{Roboto-LightItalic}[Path=../fonts/]
-\newfontfamily\thinfont{Roboto-Thin}[Path=../fonts/]
-\newfontfamily\headingfont{RobotoCondensed-Bold}[Path=../fonts/]
+\newfontfamily\bodyfont{Roboto-Regular}[Path=\fontpath]
+\newfontfamily\bodyfontit{Roboto-LightItalic}[Path=\fontpath]
+\newfontfamily\thinfont{Roboto-Thin}[Path=\fontpath]
+\newfontfamily\headingfont{RobotoCondensed-Bold}[Path=\fontpath]
 
 \defaultfontfeatures{Mapping=tex-text}
-\setmainfont[Mapping=tex-text, Color=textcolor, Path = ../fonts/]{Roboto-Light}
+\setmainfont[Mapping=tex-text, Color=textcolor, Path=\fontpath]{Roboto-Light}
 
 \newcommand{\italica}[1]{%
     {\color{gray}\bodyfontit #1}%
