@@ -86,15 +86,19 @@
 \RequirePackage{graphicx}
 \RequirePackage{tikz}
 
-\newcommand{\header}[2]{%
+\newcommand{\header}[3]{%
   \begin{tikzpicture}[remember picture,overlay]
-    \node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=2cm] (box) at (current page.north){};
-    \node [anchor=center] (name) at (box) {%
+    \node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=2.2cm] (box) at (current page.north){};
+    \node [anchor=center] (name) at (box.center) {%
       \fontsize{40pt}{65pt}\color{header}%
-      {\thinfont #1}{\bodyfont  #2}
+      {\thinfont #1}\hspace{0.3cm}{\bodyfont #2}
+    };
+    \node [anchor=north, yshift=-0.55cm] (subtitle) at (box.center) {%
+      \fontsize{11pt}{14pt}\color{header}%
+      {\bodyfont #3}
     };
   \end{tikzpicture}
-  \vspace{1cm}
+  \vspace{1.3cm}
   \vspace{-2\parskip}
 }
 
@@ -122,7 +126,7 @@
 \newcommand{\lastupdated}{
   \begin{textblock}{10}(11.3, 0.05)
     \raggedleft
-    \fontsize{8pt}{10pt}\color{date}\thinfont
+    \fontsize{8pt}{10pt}\color{white}\thinfont
     \lastupdatedtext{} \today
   \end{textblock}}
 
@@ -149,12 +153,12 @@
 }
 
 \renewcommand{\section}[1]{
-  {\par\vspace{0.35cm}
+  {\par\vspace{0.2cm}
   {%
     \LARGE\headingfont\color{headercolor}%
     \@sectioncolor #1%
   }
-  \par\vspace{0.2cm}}
+  \par\vspace{0.1cm}}
 }
 
 \renewcommand{\subsection}[2]{
@@ -192,17 +196,28 @@
     \textbf{#2}%
     \hfill%
     {\footnotesize\addfontfeature{Color=lightgray} #3}\\%
-    \vspace{-0.2cm}\vspace{\parsep}%
+    \vspace{-0.3cm}\vspace{\parsep}%
   }\\}
 \newcommand{\entrywithlogo}[5]{%
-  \parbox[t]{2.4cm}{%
-    \raggedright #1\par\vspace{0.12cm}%
+  \parbox[t]{3.0cm}{%
+    \raggedright #1\par\vspace{0.08cm}%
     \includegraphics[height=0.62cm, width=2.16cm,keepaspectratio]{#5}%
   }&\parbox[t]{12.8cm}{%
     \textbf{#2}%
     \hfill%
     {\footnotesize\addfontfeature{Color=lightgray} #3}\\%
-    #4\vspace{0.25cm}%
+    #4\vspace{0.1cm}%
+  }\\}
+\newcommand{\entrywithlogos}[6]{%
+  \parbox[t]{3.0cm}{%
+    \raggedright #1\par\vspace{0.08cm}%
+    \includegraphics[height=0.62cm, width=2.16cm,keepaspectratio]{#5}\\%
+    \includegraphics[height=0.62cm, width=2.16cm,keepaspectratio]{#6}%
+  }&\parbox[t]{12.8cm}{%
+    \textbf{#2}%
+    \hfill%
+    {\footnotesize\addfontfeature{Color=lightgray} #3}\\%
+    #4\vspace{0.1cm}%
   }\\}
 
 %----------------------------------------------------------------------------------------
@@ -214,9 +229,9 @@
 \newenvironment{aside}{%
   \let\oldsection\section
   \renewcommand{\section}[1]{
-    \par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
+    \par\vspace{0.3cm}{\Large\headingfont\color{headercolor} ##1}
   }
-  \begin{textblock}{3.6}(1, 1.87)
+  \begin{textblock}{3.6}(1, 2.57)
   \begin{flushright}
   \obeycr
 }{%
@@ -230,7 +245,7 @@
 % Other tweaks %
 %----------------------------------------------------------------------------------------
 
-\RequirePackage[left=5.6cm,top=1cm,right=1cm,bottom=1cm,nohead,nofoot]{geometry}
+\RequirePackage[left=5.0cm,top=1cm,right=1cm,bottom=1cm,nohead,nofoot]{geometry}
 \RequirePackage{hyperref}
 \hypersetup{
     pdftitle=CV/Resume \textbar{} Simon Denis Werner,
