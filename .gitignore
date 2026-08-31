@@ -1,4 +1,4 @@
 *.pdf
 *.gz
 bazel-*
-build
+release

@@ -19,10 +19,11 @@ CLS_ARG="$2"
 FONTS_ARG="$3"
 LOGOS_ARG="$4"
 OUTPUT_NAME="$5"
+RELEASE_DIR=release
 
 # Resolve absolute target locations
 OUTPUT_DIR="${BUILD_WORKING_DIRECTORY:-$(pwd)}"
-FINAL_PDF_PATH="$OUTPUT_DIR/${OUTPUT_NAME}.pdf"
+FINAL_PDF_PATH="$OUTPUT_DIR/$RELEASE_DIR/${OUTPUT_NAME}.pdf"
 
 # Initialize temp workspace environment
 WORK=$(mktemp -d)
@@ -75,5 +76,6 @@ if [ ! -f "$PDF_BASENAME" ]; then
 fi
 
 # Move file back to workspace
+mkdir -p "$OUTPUT_DIR/$RELEASE_DIR"
 cp "$PDF_BASENAME" "$FINAL_PDF_PATH"
 echo "Success: PDF created at $FINAL_PDF_PATH"

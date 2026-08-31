@@ -20,35 +20,18 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-latex-extra texlive-lang-german
-        
-      - name: Create build directory
-        run: mkdir -p build
+
+      - name: Install Bazelisk
+        uses: bazelbuild/setup-bazelisk@v3
 
       - name: Build German CV
-        run: |
-          cd src
-          xelatex -interaction=nonstopmode -halt-on-error -output-directory=../build cv_simon_werner.tex
-
-      - name: Re-build German CV to resolve cross-references
-        run: |
-          cd src
-          xelatex -interaction=nonstopmode -halt-on-error -output-directory=../build cv_simon_werner.tex
+        run: bazel run //:cv_de
 
       - name: Build English CV
-        run: |
-          cd src
-          xelatex -interaction=nonstopmode -halt-on-error -output-directory=../build -jobname=cv_simon_werner_en "\def\cvvariant{english}\input{cv_simon_werner.tex}"
-          
-      - name: Re-build English CV to resolve cross-references
-        run: |
-          cd src
-          xelatex -interaction=nonstopmode -halt-on-error -output-directory=../build -jobname=cv_simon_werner_en "\def\cvvariant{english}\input{cv_simon_werner.tex}"
+        run: bazel run //:cv_de
 
       - name: Create release package
         run: |
-          mkdir -p release
-          cp build/cv_simon_werner.pdf release/cv_simon_werner.pdf
-          cp build/cv_simon_werner_en.pdf release/cv_simon_werner_en.pdf
           cd release
           zip -r ../cv-pdfs.zip .
 
