@@ -52,17 +52,8 @@
 % Fonts %
 %----------------------------------------------------------------------------------------
 
-\makeatletter
-\IfFileExists{fonts/Roboto-Regular.ttf}{%
-  \def\fontpath{fonts/}%
-}{%
-  \IfFileExists{../fonts/Roboto-Regular.ttf}{%
-    \def\fontpath{../fonts/}%
-  }{%
-    \def\fontpath{./fonts/}%
-  }%
-}
-\makeatother
+
+\def\fontpath{fonts/}%
 
 \RequirePackage[quiet]{fontspec}
 \RequirePackage[math-style=TeX]{unicode-math}
