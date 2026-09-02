@@ -17,7 +17,7 @@
         "james-yu.latex-workshop",
         "bazelbuild.vscode-bazel",
         "github.vscode-github-actions",
-        
+        "donjayamanne.githistory"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "zsh",
@@ -28,9 +28,10 @@
   },
   "forwardPorts": [],
   "mounts": [
-    "source=bazel-cache,target=/root/.cache/bazel,type=volume"
+    "source=bazel-cache,target=/root/.cache/bazel,type=volume",
+    "source=${localEnv:HOME}/.ssh,target=/root/.ssh,readonly,type=bind"
   ],
-  "postCreateCommand": "git lfs install && bazel version",
+  "postCreateCommand": "git lfs install --force && bazel version",
   "remoteEnv": {
     "BAZEL_CACHE_DIR": "/root/.cache/bazel"
   }
