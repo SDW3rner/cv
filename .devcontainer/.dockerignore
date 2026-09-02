@@ -1,0 +1,28 @@
+# Git files
+.git
+.gitignore
+.gitattributes
+
+# Bazel cache/output
+bazel-*
+.bazelrc.local
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+release
+build
+*.pdf
+*.aux
+*.log
+
+# Documentation
+README.md

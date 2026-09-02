@@ -1,0 +1,35 @@
+{
+  "name": "CV Build Environment",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "..",
+    "args": {}
+  },
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "remoteUser": "root",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "james-yu.latex-workshop",
+        "bazelbuild.vscode-bazel"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "latex-workshop.docker.enabled": true,
+        "[tex]": { "editor.defaultFormatter": "James-Yu.latex-workshop" }
+      }
+    }
+  },
+  "forwardPorts": [],
+  "mounts": [
+    "source=bazel-cache,target=/root/.cache/bazel,type=volume"
+  ],
+  "postCreateCommand": "bazel version",
+  "remoteEnv": {
+    "BAZEL_CACHE_DIR": "/root/.cache/bazel"
+  }
+}
