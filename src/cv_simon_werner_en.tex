@@ -4,8 +4,6 @@
 \documentclass{cv-style}
 \usepackage[english]{babel}
 
-\sethyphenation{german}{} % Add words between the {} to avoid them to be cut
-
 \makeatletter
 \newcommand{\cvsection}[1]{%
   \begingroup
@@ -19,37 +17,33 @@
 \newcommand{\cvworktitle}{Work Experience}
 \newcommand{\cvedutitle}{Education}
 \newcommand{\cvqualtitle}{Other Qualifications}
-\newcommand{\cvlanguages}{German\par French\par English}
+\newcommand{\cvlanguages}{German (MT)\par French (C1)\par English (C2)}
 
 \newcommand{\cvskills}{%
-  \skillentry{Programming}{C, C++, Python, CMake, Bazel, GitHub Copilot}%
-  \skillentry{Continuous}{Integration: Git, SVN, GitHub Workflows, Gerrit, Jenkins}%
-  \skillentry{Teamwork}{CoreALM Teamforge, Microsoft Azure, Atlassian JIRA \& Confluence}%
-  \skillentry{Data analysis}{Databricks, Grafana}%
-  \skillentry{Simulation}{Mathworks Matlab/Simulink, Intempora RTMaps, IPG CarMaker}%
-  \skillentry{Requirement management}{Sphinx reStructuredText, Intland CodeBeamer}%
+  \skillentry{Programming}{C++, Python, CMake, Bazel}%
+  \skillentry{CI/CD}{Git \& GitHub}%
+  \skillentry{Simulation}{Mathworks Matlab \& Simulink, Intempora RTMaps}%
+  \skillentry{Requirement management}{Sphinx reStructuredText}%
 }
 
 \newcommand{\cvworkexperience}{%
-  \entrywithlogo{since 2026}{CARIAD SE}{Ingolstadt, Germany}{\jobtitle{Test Developer}\\Verification of requirements and functional tests for the entire internal ADAS software, including parking and active safety.}{logos/cariad.png}%
-  \entrywithlogo{2022 - 2026}{CARIAD SE - Automated Driving Alliance}{Ingolstadt, Germany}{\jobtitle{Feature Developer}\\Coordinated requirements, created concepts and integration plans and carried out end-to-end testing in simulation and on real data for L2++ HandsFree driving functions in a collaboration project with Robert Bosch GmbH. Supported component teams in implementing these functions in the areas of environment perception as well as tactical and strategic planning.}{logos/ada.png}%
-  \entrywithlogo{2021 - 2022}{Valeo Driver Assistance Research}{Kronach, Germany}{\jobtitle{Systems Engineer}\\Developed, integrated, and tested new features and public funding projects for the combined L4 highway and urban pilot \textit{Drive4U}.}{logos/valeo.png}%
-  \entrywithlogo{2017 - 2021}{Valeo Driver Assistance Research}{Kronach, Germany}{\jobtitle{Software Engineer}\\Developed and tested new modules for the Valeo L4 highway pilot \textit{Cruise4U} and public funding projects. Successfully completed the EU projects \textit{CloudLSVA} and \textit{VI-DAS}. Conducted numerous \textit{Cruise4U} demonstrations for customers and partners.}{logos/valeo.png}%
-  \entrywithlogo{2013 - 2014}{General Electric Healthcare}{Buc, France}{\jobtitle{Internship for the bachelor thesis}\\Development of a collision-detection system for a medical X-ray robot.}{logos/uni_saar.png}%
-  \entrywithlogo{2009 - 2010}{Supporting Battalion Response Forces Operations Command}{Ulm, Germany}{\jobtitle{Basic military service}}{logos/bw.png}%
+  \entrywithlogo{since Aug 2026}{CARIAD SE}{Ingolstadt, Germany}{\jobtitle{Test Developer}\begin{itemize}\item Verification of requirements and functional tests for the entire internal ADAS software, including parking and active safety\item Focus on agentic test automation\item Enabling system release by developing test concepts and corresponding test frameworks\end{itemize}}{logos/cariad.png}%
+  \entrywithlogos{Jun 2022 - Aug 2026}{CARIAD SE - Automated Driving Alliance}{Ingolstadt, Germany}{\jobtitle{Feature Developer}\begin{itemize}\item Development of an ADAS product in cooperation with Robert Bosch GmbH\item End-to-end responsibility for the HandsFree feature of the ADAS product\item System release through system and integration tests based on simulation and real data and extension of the internal simulation framework\item Ensuring timely implementation through coordination and technical support of the environment perception and tactical planning component teams\end{itemize}}{logos/cariad.png}{logos/ada.png}%
+  \entrywithlogo{May 2021 - May 2022}{Valeo Driver Assistance Research}{Kronach, Germany}{\jobtitle{Systems Engineer}\begin{itemize}\item Integration of the \textit{Cruise4U} highway pilot and \textit{Drive4U} urban pilot into a combined L4 driving function\item Successful customer demonstrations of the combined pilot at IAA 2021 in Munich\end{itemize}}{logos/valeo.png}%
+  \entrywithlogo{Apr 2017 - May 2021}{Valeo Driver Assistance Research}{Kronach, Germany}{\jobtitle{Software Engineer}\begin{itemize}\item Successful completion of EU projects \textit{CloudLSVA} and \textit{VI-DAS}\item Numerous successful customer and partner demonstrations of the \textit{Cruise4U} highway pilot\end{itemize}}{logos/valeo.png}%
+  \entrywithlogo{Oct 2009 - Jun 2010}{Supporting Battalion Response Forces Operations Command}{Ulm, Germany}{\jobtitle{Basic military service}}{logos/bw.png}%
 }
 
 \newcommand{\cveducation}{%
-  \entrywithlogo{2012 - 2016}{Ingénieur diplômé {\normalfont in Mechatronics}}{ENSIAME (France)}{Specialization in microsystems engineering}{logos/ensiame.jpg}%
-  \entrywithlogo{2014 - 2016}{M.Sc. {\normalfont in Mechatronics}}{Saarland University}{Specialization in microsystems engineering\\Master thesis \textit{Optimization of the energy-saving potential of a GPU-based global dimming algorithm for LCD displays in automotive applications} at the Chair for Microelectronics}{logos/uni_saar.png}%
-  \entrywithlogo{2010 - 2014}{B.Sc. {\normalfont in Mechatronics}}{Saarland University}{Specialization in microsystems engineering}{logos/uni_saar.png}%
+  \entrywithlogos{Sep 2014 - Feb 2017}{Saarland University \& ENSIAME}{Saarbrücken \& Valenciennes}{\jobtitle{M.Sc. {\normalfont and} Ingénieur diplômé {\normalfont in Mechatronics}}\\Optimization of the energy-saving potential of a GPU-based global dimming algorithm for LCD displays in automotive applications}{logos/uni_saar.png}{logos/ensiame.jpg}%
+  \entrywithlogos{Sep 2010 - Aug 2014}{Saarland University \& General Electric Healthcare}{Saarbrücken \& Buc}{\jobtitle{B.Sc. {\normalfont in Mechatronics}}\\Collision detection system for a medical X-ray robot}{logos/uni_saar.png}{logos/ge_healthcare.png}%
 }
 
 \newcommand{\cvqualifications}{%
-  \entry{2022}{Prototype driving licence level C - Trained Driver}{AUDI Driving Experience Center}%
-  \entry{2018}{Test track certificate level C}{ATP Papenburg}%
+  \skillentry{Teamwork}{CoreALM Teamforge, Microsoft Azure, Atlassian JIRA}%
+  \skillentry{Data analysis}{Databricks, Grafana}%
+  \skillentry{Prototype driving licenses}{AUDI Trained Driver, ATP Papenburg Test Track Certificate Level C}%
 }
-
 \makeatother
 
 \AtBeginDocument{%
@@ -74,8 +68,8 @@
 %
 \cvsection{\cvcontacttitle}
 Karwendelstraße 24A
-81369 München
-Deutschland
+81369 Munich
+Germany
 ~
 +49 (0) 151 2222 3912
 ~
