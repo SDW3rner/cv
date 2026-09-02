@@ -33,6 +33,7 @@
   ],
   "postCreateCommand": "git lfs install --force && bazel version",
   "remoteEnv": {
-    "BAZEL_CACHE_DIR": "/root/.cache/bazel"
+    "BAZEL_CACHE_DIR": "/root/.cache/bazel",
+    "GIT_EDITOR": "nano"
   }
 }

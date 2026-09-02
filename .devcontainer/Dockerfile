@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     git \
     git-lfs \
+    openssh-client \
     ca-certificates \
     gnupg \
     # LaTeX and fonts
@@ -21,9 +22,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     texlive-lang-german \
     fonts-roboto \
     # Utilities
+    nano \
     zip \
     zsh \
     && rm -rf /var/lib/apt/lists/*
+
+# Use Nano for Git operations that open an editor
+RUN git config --system core.editor nano
 
 # Install Bazelisk (modern Bazel version manager)
 RUN curl -fsSL https://github.com/bazelbuild/bazelisk/releases/download/v1.20.0/bazelisk-linux-amd64 \
