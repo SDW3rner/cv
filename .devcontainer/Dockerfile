@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     # Build tools
     curl \
     git \
+    git-lfs \
     ca-certificates \
     gnupg \
     # LaTeX and fonts

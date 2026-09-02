@@ -15,7 +15,9 @@
     "vscode": {
       "extensions": [
         "james-yu.latex-workshop",
-        "bazelbuild.vscode-bazel"
+        "bazelbuild.vscode-bazel",
+        "github.vscode-github-actions",
+        
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "zsh",
@@ -28,7 +30,7 @@
   "mounts": [
     "source=bazel-cache,target=/root/.cache/bazel,type=volume"
   ],
-  "postCreateCommand": "bazel version",
+  "postCreateCommand": "git lfs install && bazel version",
   "remoteEnv": {
     "BAZEL_CACHE_DIR": "/root/.cache/bazel"
   }
