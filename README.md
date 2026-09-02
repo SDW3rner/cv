@@ -2,43 +2,6 @@
 
 This repository contains a LaTeX-based CV template and source for a German/English resume.
 
-## Build instructions
-
-The CV is built with XeLaTeX (or LuaLaTeX) because the template uses OpenType fonts.
-
-1. Make sure the required fonts are available in the [fonts](fonts) directory.
-2. From the repository root, create the build directory if needed and run the build from the source directory:
-
-   ```bash
-   mkdir -p build
-   cd src
-   xelatex -interaction=nonstopmode -halt-on-error -output-directory=../build cv_simon_werner.tex
-   ```
-
-3. The generated PDF will be written to [build/cv_simon_werner.pdf](build/cv_simon_werner.pdf).
-
-### Building both German and English versions
-
-The CV is now split into separate source files for better maintainability:
-
-- **German version** (`cv_simon_werner.tex`): Build with:
-  ```bash
-  cd src
-  xelatex -interaction=nonstopmode -halt-on-error -output-directory=../build cv_simon_werner.tex
-  ```
-  Output: [build/cv_simon_werner.pdf](build/cv_simon_werner.pdf)
-
-- **English version** (`cv_simon_werner_en.tex`): Build with:
-  ```bash
-  cd src
-  xelatex -interaction=nonstopmode -halt-on-error -output-directory=../build cv_simon_werner_en.tex
-  ```
-  Output: [build/cv_simon_werner_en.pdf](build/cv_simon_werner_en.pdf)
-
-### Shared configuration
-
-Common styling, formatting, and layout settings are consolidated in `cv-style.cls`. Both German and English versions inherit these shared settings, ensuring consistent appearance while allowing for language-specific content.
-
 ## Building with Bazel
 
 This project includes Bazel build configuration for reproducible builds. Bazel ensures all dependencies are properly managed and builds are isolated.
@@ -46,7 +9,7 @@ This project includes Bazel build configuration for reproducible builds. Bazel e
 ### Prerequisites
 
 - Install [Bazel](https://bazel.build/start)
-- XeLaTeX must be installed and available in PATH
+- XeLaTeX must be installed and available in PATH for Bazel to build the PDFs
 
 ### Build targets
 
